@@ -34,6 +34,33 @@ Small teams (2-15 people) who:
 - Already have SSH keys (most developers do)
 - Need CI/CD to pull secrets without shared credentials
 
+## Why envsh over alternatives
+
+| | envsh | Vault | Doppler | Infisical | AWS Secrets Manager |
+|---|---|---|---|---|---|
+| **Server can read secrets** | No | Yes | Yes | Optional E2EE | Yes |
+| **Setup time** | Minutes | Hours/days | Minutes | Minutes | Minutes |
+| **Self-hostable** | Yes (open source) | Yes | No | Yes | No |
+| **Auth** | SSH keys you have | Tokens, LDAP, OIDC... | SSO | SSO, tokens | IAM |
+| **Dynamic secrets** | No | Yes | No | No | Partial |
+| **Price** | Free up to 3, $1.99/seat | Free (OSS), $$$ (Enterprise) | Free tier, $18/user | Free tier, $6/user | $0.40/secret/month |
+
+**The honest pitch:** If you need dynamic secrets, secret rotation, or a policy engine, use Vault. If you need a web dashboard and 50+ integrations, use Doppler. If you want the **only secrets manager where the server mathematically cannot read your secrets**, and you value simplicity over features, use envsh.
+
+## What envsh does not do
+
+Being honest about scope:
+
+- **No web dashboard** — CLI only. Your terminal is the interface.
+- **No dynamic secrets** — envsh stores static key-value pairs, not rotating database credentials.
+- **No secret rotation** — you rotate manually by pushing a new version.
+- **No granular permissions** — two roles (admin/member), no per-environment ACLs.
+- **No integrations** — no native Kubernetes, Terraform, or cloud provider plugins (yet).
+- **No SSO/SAML** — email + code authentication only.
+- **No Windows support** — macOS and Linux only (Windows via WSL).
+
+These are deliberate choices, not missing features. envsh does one thing — zero-knowledge secret sync — and does it well.
+
 ## Architecture
 
 ```
