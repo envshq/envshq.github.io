@@ -14,7 +14,7 @@ envsh workspace
 #   "name": "alice@example.com",
 #   "slug": "alice",
 #   "members": [...],
-#   "subscription": { "plan": "free", "seat_count": 3 }
+#   "members": 2
 # }
 ```
 
@@ -65,10 +65,3 @@ Removing a member does not affect existing secret versions — the ciphertext is
 | **member** | Push, pull, manage their own SSH keys |
 
 Two roles. No granular per-environment permissions. If you're on the team, you're trusted.
-
-## Plan limits
-
-| Plan | Members | Price |
-|------|---------|-------|
-| **Free** | Up to 3 (admin included) | Free |
-| **Team** | Unlimited | $1.99/seat/month |

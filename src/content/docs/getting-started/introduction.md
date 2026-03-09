@@ -43,7 +43,7 @@ Small teams (2-15 people) who:
 | **Self-hostable** | Yes (open source) | Yes | No | Yes | No |
 | **Auth** | SSH keys you have | Tokens, LDAP, OIDC... | SSO | SSO, tokens | IAM |
 | **Dynamic secrets** | No | Yes | No | No | Partial |
-| **Price** | Free up to 3, $1.99/seat | Free (OSS), $$$ (Enterprise) | Free tier, $18/user | Free tier, $6/user | $0.40/secret/month |
+| **Price** | Free (open source) | Free (OSS), $$$ (Enterprise) | Free tier, $18/user | Free tier, $6/user | $0.40/secret/month |
 
 **The honest pitch:** If you need dynamic secrets, secret rotation, or a policy engine, use Vault. If you need a web dashboard and 50+ integrations, use Doppler. If you want the **only secrets manager where the server mathematically cannot read your secrets**, and you value simplicity over features, use envsh.
 
