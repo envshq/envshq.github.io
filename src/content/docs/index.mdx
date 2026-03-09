@@ -1,0 +1,54 @@
+---
+title: envsh
+description: Zero-knowledge secret management for teams.
+template: splash
+hero:
+  tagline: The only secrets manager that can't read your secrets. Client-side encryption with your SSH keys — the server stores only ciphertext.
+  actions:
+    - text: Get Started
+      link: /getting-started/introduction/
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/envshq/envsh
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Zero-knowledge" icon="lock-closed">
+    Secrets are encrypted on your machine before they leave it. The server mathematically cannot read them.
+  </Card>
+  <Card title="SSH keys you already have" icon="key">
+    No new credentials to manage. envsh uses your existing Ed25519 SSH keys for encryption.
+  </Card>
+  <Card title="Push & pull" icon="sync">
+    Simple workflow: `envsh push .env` to encrypt and upload. `envsh pull production` to decrypt and download.
+  </Card>
+  <Card title="CI/CD ready" icon="rocket">
+    Machine identities let CI/CD pipelines pull secrets with short-lived tokens. Scoped to one project + one environment.
+  </Card>
+</CardGrid>
+
+---
+
+## Quick taste
+
+```bash
+# Install
+curl -fsSL https://get.envsh.dev | sh
+
+# Log in with your email
+envsh login
+
+# Push secrets (encrypted with your SSH key)
+envsh push .env --project my-api --env production
+
+# Pull on another machine
+envsh pull production --project my-api
+
+# Run a command with secrets injected
+envsh run production --project my-api -- node server.js
+```
