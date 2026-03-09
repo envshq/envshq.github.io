@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://envshq.github.io',
+	site: 'https://envsh.dev',
 	integrations: [
 		starlight({
 			title: 'envsh',
