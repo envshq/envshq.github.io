@@ -20,7 +20,7 @@ hero:
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-<div class="hero-code">
+<div class="install-cmd">
 
 ```sh frame="none"
 curl -fsSL https://envsh.dev/install.sh | sh
@@ -28,34 +28,58 @@ curl -fsSL https://envsh.dev/install.sh | sh
 
 </div>
 
-<div class="hero-code">
+<div class="landing-section">
+<CardGrid>
+  <Card title="Zero-knowledge" icon="lock-closed">
+    AES-256-GCM encryption happens entirely on your machine. The server stores ciphertext blobs it mathematically cannot decrypt — even with full database access.
+  </Card>
+  <Card title="Your SSH keys" icon="key">
+    No new credentials to manage. envsh uses your existing Ed25519 SSH keys for asymmetric key wrapping. If you have `~/.ssh/id_ed25519`, you're ready.
+  </Card>
+  <Card title="Push & pull" icon="sync">
+    Git-like workflow for secrets. `push` generates a fresh AES key, encrypts, wraps per-recipient, and uploads. `pull` unwraps and decrypts locally.
+  </Card>
+  <Card title="CI/CD machines" icon="rocket">
+    Ed25519 machine identities with challenge-response auth. Each scoped to exactly one project and one environment. Short-lived JWTs, no shared credentials.
+  </Card>
+</CardGrid>
+</div>
+
+<div class="landing-section">
+<div class="terminal-window">
+<div class="terminal-bar">
+<div class="terminal-dots">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<span class="terminal-title">envsh</span>
+</div>
+<div class="terminal-body">
 
 ```sh frame="none"
 $ envsh login
+✓ Code sent to you@company.com
+
 $ envsh push .env --project my-api --env production
+✓ Encrypted for 3 recipients · v1 · 12 secrets
+
 $ envsh pull production --project my-api
+✓ Decrypted · wrote .env · 12 secrets
+
 $ envsh run production --project my-api -- node server.js
+✓ Injected 12 secrets · running...
 ```
 
 </div>
-
-<div class="feature-row">
-
-**Zero-knowledge** — the server can't read your secrets. Not "won't" — *can't*.
-
-**Your SSH keys** — no new credentials. Uses Ed25519 keys you already have.
-
-**Push & pull** — `push` encrypts and uploads. `pull` decrypts and downloads.
-
-**CI/CD ready** — machine identities scoped to one project, one environment.
-
+</div>
 </div>
 
----
-
+<div class="landing-section">
 <CardGrid>
   <LinkCard title="Quick Start" description="First secret in 5 minutes." href="/getting-started/quickstart/" />
   <LinkCard title="How It Works" description="The crypto, explained." href="/concepts/how-it-works/" />
   <LinkCard title="Self-Hosting" description="Run your own server." href="/guides/self-hosting/" />
   <LinkCard title="Why envsh?" description="Honest comparison with alternatives." href="/getting-started/introduction/" />
 </CardGrid>
+</div>
