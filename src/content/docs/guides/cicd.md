@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install envsh
-        run: curl -fsSL https://get.envsh.dev | sh
+        run: curl -fsSL https://envsh.dev/install.sh | sh
 
       - name: Deploy
         env:
@@ -59,7 +59,7 @@ jobs:
 deploy:
   stage: deploy
   script:
-    - curl -fsSL https://get.envsh.dev | sh
+    - curl -fsSL https://envsh.dev/install.sh | sh
     - envsh run production --project my-api -- ./deploy.sh
   variables:
     ENVSH_MACHINE_KEY: $ENVSH_MACHINE_KEY

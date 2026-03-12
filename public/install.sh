@@ -2,7 +2,7 @@
 set -e
 
 # envsh installer
-# Usage: curl -fsSL https://get.envsh.dev | sh
+# Usage: curl -fsSL https://envsh.dev/install.sh | sh
 
 REPO="envshq/envsh"
 INSTALL_DIR="/usr/local/bin"

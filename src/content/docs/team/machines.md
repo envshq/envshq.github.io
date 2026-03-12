@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install envsh
-        run: curl -fsSL https://get.envsh.dev | sh
+        run: curl -fsSL https://envsh.dev/install.sh | sh
 
       - name: Deploy with secrets
         env:

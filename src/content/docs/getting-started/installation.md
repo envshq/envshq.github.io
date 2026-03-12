@@ -6,7 +6,7 @@ description: Install the envsh CLI on macOS or Linux.
 ## Quick install
 
 ```bash
-curl -fsSL https://get.envsh.dev | sh
+curl -fsSL https://envsh.dev/install.sh | sh
 ```
 
 This detects your OS and architecture, downloads the latest release, and installs to `/usr/local/bin`.
@@ -14,7 +14,7 @@ This detects your OS and architecture, downloads the latest release, and install
 ### Specific version
 
 ```bash
-ENVSH_VERSION=v1.0.0 curl -fsSL https://get.envsh.dev | sh
+ENVSH_VERSION=v1.0.0 curl -fsSL https://envsh.dev/install.sh | sh
 ```
 
 ## Build from source
