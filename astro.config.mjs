@@ -53,6 +53,7 @@ export default defineConfig({
 						{ label: 'CLI Commands', slug: 'reference/commands' },
 						{ label: 'Configuration', slug: 'reference/configuration' },
 						{ label: 'Security & Crypto', slug: 'reference/security' },
+						{ label: 'Known Issues', slug: 'known-issues' },
 					],
 				},
 			],

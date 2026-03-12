@@ -2,53 +2,60 @@
 title: envsh
 description: Zero-knowledge secret management for teams.
 template: splash
+banner:
+  content: |
+    Early access — <a href="/known-issues/">see known issues</a>
 hero:
-  tagline: The only secrets manager that can't read your secrets. Client-side encryption with your SSH keys — the server stores only ciphertext.
+  tagline: "Zero-knowledge secrets for teams. Encrypted with your SSH keys — the server stores only ciphertext."
   actions:
     - text: Get Started
-      link: /getting-started/introduction/
+      link: /getting-started/installation/
       icon: right-arrow
       variant: primary
-    - text: View on GitHub
+    - text: GitHub
       link: https://github.com/envshq/envsh
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-<CardGrid>
-  <Card title="Zero-knowledge" icon="lock-closed">
-    Secrets are encrypted on your machine before they leave it. The server mathematically cannot read them.
-  </Card>
-  <Card title="SSH keys you already have" icon="key">
-    No new credentials to manage. envsh uses your existing Ed25519 SSH keys for encryption.
-  </Card>
-  <Card title="Push & pull" icon="sync">
-    Simple workflow: `envsh push .env` to encrypt and upload. `envsh pull production` to decrypt and download.
-  </Card>
-  <Card title="CI/CD ready" icon="rocket">
-    Machine identities let CI/CD pipelines pull secrets with short-lived tokens. Scoped to one project + one environment.
-  </Card>
-</CardGrid>
+<div class="hero-code">
+
+```sh frame="none"
+curl -fsSL https://envsh.dev/install.sh | sh
+```
+
+</div>
+
+<div class="hero-code">
+
+```sh frame="none"
+$ envsh login
+$ envsh push .env --project my-api --env production
+$ envsh pull production --project my-api
+$ envsh run production --project my-api -- node server.js
+```
+
+</div>
+
+<div class="feature-row">
+
+**Zero-knowledge** — the server can't read your secrets. Not "won't" — *can't*.
+
+**Your SSH keys** — no new credentials. Uses Ed25519 keys you already have.
+
+**Push & pull** — `push` encrypts and uploads. `pull` decrypts and downloads.
+
+**CI/CD ready** — machine identities scoped to one project, one environment.
+
+</div>
 
 ---
 
-## Quick taste
-
-```bash
-# Install
-curl -fsSL https://get.envsh.dev | sh
-
-# Log in with your email
-envsh login
-
-# Push secrets (encrypted with your SSH key)
-envsh push .env --project my-api --env production
-
-# Pull on another machine
-envsh pull production --project my-api
-
-# Run a command with secrets injected
-envsh run production --project my-api -- node server.js
-```
+<CardGrid>
+  <LinkCard title="Quick Start" description="First secret in 5 minutes." href="/getting-started/quickstart/" />
+  <LinkCard title="How It Works" description="The crypto, explained." href="/concepts/how-it-works/" />
+  <LinkCard title="Self-Hosting" description="Run your own server." href="/guides/self-hosting/" />
+  <LinkCard title="Why envsh?" description="Honest comparison with alternatives." href="/getting-started/introduction/" />
+</CardGrid>
