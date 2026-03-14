@@ -76,6 +76,7 @@ code {
 
 .expressive-code {
 	--ec-brdRad: 0.5rem;
+	--ec-brdWd: 1px;
 	--ec-brdCol: var(--sl-color-gray-4);
 	--ec-codeBg: #0a0a0a;
 	--ec-codePadBlk: 1rem;
@@ -83,18 +84,36 @@ code {
 	--ec-frm-frameBoxShdCssVal: none;
 }
 
+:root[data-theme='light'] .expressive-code {
+	--ec-codeBg: #f5f5f5;
+	--ec-brdCol: #d4d4d4;
+}
+
 .expressive-code pre {
 	font-size: 0.95rem;
 	line-height: 1.7;
 }
 
-/* Hide default terminal header globally */
-.expressive-code .frame.is-terminal .header,
-.expressive-code .frame.is-terminal figcaption {
+/* Strip ALL frame chrome — terminal headers, editor tabs, everything */
+.expressive-code .frame .header,
+.expressive-code .frame figcaption {
 	display: none !important;
 }
 
-/* Copy button — always accessible, show on hover */
+/* Restore border-top + radius on pre when header is hidden */
+.expressive-code .frame.is-terminal pre,
+.expressive-code .frame.has-title pre {
+	border-top: var(--ec-brdWd) solid var(--ec-brdCol) !important;
+	border-top-left-radius: var(--ec-brdRad) !important;
+	border-top-right-radius: var(--ec-brdRad) !important;
+}
+
+/* Uniform background for terminal frames */
+.expressive-code .frame.is-terminal {
+	--code-background: var(--ec-codeBg);
+}
+
+/* Copy button — appears on hover */
 .expressive-code .copy {
 	inset-block-start: 0.5rem !important;
 	inset-inline-end: 0.5rem !important;

@@ -5,7 +5,7 @@ description: Install the envsh CLI on macOS or Linux.
 
 ## Quick install
 
-```bash
+```sh
 curl -fsSL https://envsh.dev/install.sh | sh
 ```
 
@@ -13,13 +13,13 @@ This detects your OS and architecture, downloads the latest release, and install
 
 ### Specific version
 
-```bash
-ENVSH_VERSION=v1.0.0 curl -fsSL https://envsh.dev/install.sh | sh
+```sh
+ENVSH_VERSION=v0.2.0 curl -fsSL https://envsh.dev/install.sh | sh
 ```
 
 ## Build from source
 
-```bash
+```sh
 git clone https://github.com/envshq/envsh
 cd envsh
 make build
@@ -31,9 +31,9 @@ Requires Go 1.22+.
 
 ## Verify
 
-```bash
+```sh
 envsh version
-# envsh 1.0.0 (or "envsh dev" for source builds)
+# envsh v0.2.0 (or "envsh dev" for source builds)
 ```
 
 ## Supported platforms
@@ -50,7 +50,7 @@ envsh version
 
 You need an **Ed25519 SSH key**. If you don't have one:
 
-```bash
+```sh
 ssh-keygen -t ed25519 -C "your@email.com"
 ```
 

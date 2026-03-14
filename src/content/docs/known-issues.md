@@ -3,28 +3,22 @@ title: Known Issues
 description: Current limitations and known bugs in envsh.
 ---
 
-envsh is in **early access** (v0.1.x). The core encryption and push/pull flow works, but there are rough edges. This page tracks them honestly.
+envsh is in **early access**. The core encryption, push/pull, team management, and CI/CD flows all work, but there are rough edges. This page tracks them honestly.
 
 ## Active issues
 
-### Multi-workspace switching
-
-When you're invited to someone else's workspace, you can't easily switch to it yet. Your JWT is scoped to your own auto-created workspace, so `envsh project list` shows your projects, not the ones you were invited to.
-
-**Workaround:** The workspace owner should re-invite you. We're working on `envsh workspace list` and `envsh workspace switch` commands to fix this properly.
-
-**Status:** In progress.
-
 ### Re-push required after adding team members
 
-When a new member is added to the workspace, they can't pull existing secrets until someone pushes again. This is by design — secrets are encrypted per-recipient, so a fresh push is needed to include the new member's public key.
+When a new member or machine is added, they can't pull existing secrets until someone pushes again. This is by design — secrets are encrypted per-recipient, so a fresh push is needed to include the new key.
 
-**Workaround:** After inviting someone, re-push the latest secrets:
+**Workaround:** After inviting someone or creating a machine, re-push the latest secrets:
 
 ```bash
 envsh pull production --project my-api
 envsh push .env --project my-api --env production
 ```
+
+A future `envsh rewrap` command ([#3](https://github.com/envshq/envsh/issues/3)) will allow granting access to new keys without re-pushing the full secret.
 
 ### No Windows support
 
@@ -35,6 +29,14 @@ envsh works on macOS and Linux. Windows is only supported through WSL (Windows S
 The REST API and CLI flags may change between 0.x releases. We'll follow semver — breaking changes bump the minor version until 1.0.
 
 ## Resolved issues
+
+### Multi-workspace switching
+
+**Fixed in v0.2.0.** Previously, being invited to another workspace required workarounds. Now use `envsh workspace list` to see all workspaces and `envsh workspace switch WORKSPACE_ID` to switch context.
+
+### Member removal didn't revoke access
+
+**Fixed in v0.2.0.** Removing a member now instantly revokes their API access. The removed member can still run `envsh workspace list` and `envsh workspace switch` to return to their own workspace.
 
 ### SSH key registration missing fingerprint
 

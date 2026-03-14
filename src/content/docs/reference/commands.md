@@ -125,10 +125,26 @@ envsh keys revoke FINGERPRINT_OR_ID
 
 ## `envsh workspace`
 
-Show workspace details.
+Show current workspace details.
 
 ```
 envsh workspace
+```
+
+### `envsh workspace list`
+
+List all workspaces you belong to.
+
+```
+envsh workspace list
+```
+
+### `envsh workspace switch`
+
+Switch to a different workspace. All subsequent commands operate in that workspace.
+
+```
+envsh workspace switch WORKSPACE_ID
 ```
 
 ---
@@ -157,7 +173,7 @@ envsh members
 
 ## `envsh remove`
 
-Remove a member from the workspace (admin only).
+Remove a member from the workspace (admin only). Access is revoked instantly — the member is blocked from all workspace operations immediately.
 
 ```
 envsh remove EMAIL

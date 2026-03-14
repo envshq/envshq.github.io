@@ -13,12 +13,25 @@ envsh login
 
 Access tokens expire in 24 hours (auto-refreshed). Refresh tokens expire in 30 days — after that, log in again.
 
+## "UNAUTHORIZED: access revoked"
+
+You were removed from this workspace. Your JWT is still valid but access has been revoked.
+
+```bash
+# See which workspaces you belong to
+envsh workspace list
+
+# Switch to your own workspace (or another one you're a member of)
+envsh workspace switch WORKSPACE_ID
+```
+
 ## "decrypting: no recipient entry for this key"
 
-Your SSH key fingerprint is not in the recipients list. This happens when:
+Your key fingerprint is not in the recipients list. This happens when:
 
-- You registered your SSH key **after** the secret was last pushed
+- You or your machine were added **after** the secret was last pushed
 - You're using a different SSH key than the one registered
+- (CI/CD) The machine was created but nobody re-pushed to include the machine's key
 
 Fix:
 
@@ -29,7 +42,7 @@ envsh keys list
 # Register your key if it's not there
 envsh keys add
 
-# Have someone push again (or do it yourself)
+# Have someone push again to include your key as a recipient
 envsh pull production --project my-api --key ~/.ssh/id_ed25519_old
 envsh push .env --project my-api --env production
 ```
@@ -81,6 +94,17 @@ The machine was revoked. Create a new one:
 ```bash
 envsh machine create new-deploy-prod --project my-api --env production
 # Update ENVSH_MACHINE_KEY in your CI/CD system
+# Then re-push to include the new machine as a recipient
+envsh push .env --project my-api --env production
+```
+
+## Machine "no recipient entry" in CI/CD
+
+The machine was created but nobody re-pushed secrets to include it as a recipient. On your local machine:
+
+```bash
+envsh pull production --project my-api
+envsh push .env --project my-api --env production --message "include machine key"
 ```
 
 ## SSH key has a passphrase

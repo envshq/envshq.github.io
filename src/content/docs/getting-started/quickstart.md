@@ -78,3 +78,20 @@ When you pulled:
 4. Wrote `.env` with `0600` permissions
 
 The server never saw your plaintext. It can't — it doesn't have anyone's private key.
+
+## Invited to a team?
+
+If someone invited you, log in and switch to their workspace:
+
+```bash
+envsh login
+envsh workspace list
+# NAME                   SLUG      ROLE     ID
+# you@example.com        you       admin    abc123-...
+# Acme Corp              acme      member   def456-...
+
+envsh workspace switch def456-...
+# ok: Switched to workspace Acme Corp
+
+envsh pull production --project my-api
+```

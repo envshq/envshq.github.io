@@ -45,7 +45,7 @@ Small teams (2-15 people) who:
 | **Dynamic secrets** | No | Yes | No | No | Partial |
 | **Price** | Free (open source) | Free (OSS), $$$ (Enterprise) | Free tier, $18/user | Free tier, $6/user | $0.40/secret/month |
 
-**The honest pitch:** If you need dynamic secrets, secret rotation, or a policy engine, use Vault. If you need a web dashboard and 50+ integrations, use Doppler. If you want the **only secrets manager where the server mathematically cannot read your secrets**, and you value simplicity over features, use envsh.
+envsh trades features for a guarantee no other tool makes: the server cannot read your secrets, by design.
 
 ## What envsh does not do
 
