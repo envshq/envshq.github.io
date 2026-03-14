@@ -61,7 +61,7 @@ jobs:
       - name: Deploy with secrets
         env:
           ENVSH_MACHINE_KEY: ${{ secrets.ENVSH_MACHINE_KEY }}
-        run: envsh run production --project my-api -- ./deploy.sh
+        run: envsh run --project my-api production -- ./deploy.sh
 ```
 
 Add `ENVSH_MACHINE_KEY` in GitHub → Settings → Secrets and variables → Actions → New repository secret.
@@ -73,7 +73,7 @@ deploy:
   stage: deploy
   script:
     - curl -fsSL https://envsh.dev/install.sh | sh
-    - envsh run production --project my-api -- ./deploy.sh
+    - envsh run --project my-api production -- ./deploy.sh
   variables:
     ENVSH_MACHINE_KEY: $ENVSH_MACHINE_KEY
 ```
@@ -90,7 +90,7 @@ pipelines:
           name: Deploy
           script:
             - curl -fsSL https://envsh.dev/install.sh | sh
-            - envsh run production --project my-api -- ./deploy.sh
+            - envsh run --project my-api production -- ./deploy.sh
 ```
 
 Add `ENVSH_MACHINE_KEY` in Bitbucket → Repository settings → Pipelines → Repository variables (secured).
@@ -109,7 +109,7 @@ jobs:
           command: curl -fsSL https://envsh.dev/install.sh | sh
       - run:
           name: Deploy
-          command: envsh run production --project my-api -- ./deploy.sh
+          command: envsh run --project my-api production -- ./deploy.sh
 ```
 
 Add `ENVSH_MACHINE_KEY` in CircleCI → Project Settings → Environment Variables.
@@ -120,7 +120,7 @@ Don't bake secrets into images. Pull at runtime:
 
 ```dockerfile
 # Option 1: use envsh run (secrets never touch disk)
-CMD ["envsh", "run", "production", "--project", "my-api", "--", "node", "server.js"]
+CMD ["envsh", "run", "--project", "my-api", "production", "--", "node", "server.js"]
 ```
 
 ```bash

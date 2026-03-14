@@ -58,7 +58,7 @@ envsh pull production --project my-api
 Inject secrets as environment variables without writing them to disk:
 
 ```bash
-envsh run production --project my-api -- node server.js
+envsh run --project my-api production -- node server.js
 ```
 
 The process receives your secrets as env vars. When it exits, they're gone.

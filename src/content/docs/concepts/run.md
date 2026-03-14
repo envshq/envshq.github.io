@@ -6,20 +6,20 @@ description: Inject secrets into a process without writing them to disk.
 `envsh run` pulls secrets, injects them as environment variables, and runs a command. The secrets are never written to disk.
 
 ```bash
-envsh run production --project my-api -- node server.js
+envsh run --project my-api production -- node server.js
 ```
 
 ## Examples
 
 ```bash
 # Run a Node.js app
-envsh run production --project my-api -- node server.js
+envsh run --project my-api production -- node server.js
 
 # Run a database migration
-envsh run production --project my-api -- npx prisma migrate deploy
+envsh run --project my-api production -- npx prisma migrate deploy
 
 # Run a deploy script
-envsh run staging --project my-api -- ./deploy.sh
+envsh run --project my-api staging -- ./deploy.sh
 ```
 
 ## The `--` separator
@@ -28,10 +28,10 @@ The `--` is required to separate envsh flags from the command being run.
 
 ```bash
 # Correct — deploy.sh gets --verbose as its own flag
-envsh run production --project my-api -- ./deploy.sh --verbose
+envsh run --project my-api production -- ./deploy.sh --verbose
 
 # Wrong — envsh tries to parse --verbose
-envsh run production --project my-api ./deploy.sh --verbose
+envsh run --project my-api production ./deploy.sh --verbose
 ```
 
 ## Environment variable merging
@@ -45,5 +45,5 @@ The exit code of the subprocess is propagated. If `node server.js` exits with co
 ## Custom SSH key
 
 ```bash
-envsh run production --project my-api --key ~/.ssh/id_ed25519_work -- node server.js
+envsh run --project my-api --key ~/.ssh/id_ed25519_work production -- node server.js
 ```

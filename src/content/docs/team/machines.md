@@ -63,7 +63,7 @@ jobs:
       - name: Deploy with secrets
         env:
           ENVSH_MACHINE_KEY: ${{ secrets.ENVSH_MACHINE_KEY }}
-        run: envsh run production --project my-api -- ./deploy.sh
+        run: envsh run --project my-api production -- ./deploy.sh
 ```
 
 ## Include machine in pushes

@@ -82,7 +82,7 @@ envsh pull ENV --project SLUG [options]
 Pull secrets, inject as env vars, run a command.
 
 ```
-envsh run ENV --project SLUG [--key PATH] -- COMMAND [ARGS...]
+envsh run --project SLUG [--key PATH] ENV -- COMMAND [ARGS...]
 ```
 
 | Argument/Flag | Description |

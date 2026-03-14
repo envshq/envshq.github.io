@@ -20,6 +20,20 @@ envsh push .env --project my-api --env production
 
 A future `envsh rewrap` command ([#3](https://github.com/envshq/envsh/issues/3)) will allow granting access to new keys without re-pushing the full secret.
 
+### `envsh run` flag ordering ([#19](https://github.com/envshq/envsh/issues/19))
+
+Flags must come before the environment argument:
+
+```sh
+# This works
+envsh run --project myapp production -- node server.js
+
+# This doesn't
+envsh run production --project myapp -- node server.js
+```
+
+**Status:** Open.
+
 ### No Windows support
 
 envsh works on macOS and Linux. Windows is only supported through WSL (Windows Subsystem for Linux).
