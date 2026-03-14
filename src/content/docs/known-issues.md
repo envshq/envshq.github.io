@@ -55,6 +55,19 @@ These are deliberate scope decisions for the initial release — not missing fea
 
 If any of these matter to you, [let us know](https://github.com/envshq/envsh/issues) — real demand shapes the roadmap.
 
+## Roadmap
+
+We track all planned work as GitHub issues. These are actively being worked on:
+
+- [envsh rewrap](https://github.com/envshq/envsh/issues/3) — grant access to new members without re-pushing
+- [Invite email notifications](https://github.com/envshq/envsh/issues/2) — notify members when invited
+- [Project config file](https://github.com/envshq/envsh/issues/6) — `.envsh.json` for default project/env
+- [envsh diff](https://github.com/envshq/envsh/issues/8) — compare environments
+- [envsh log](https://github.com/envshq/envsh/issues/7) — view push history
+- [Access audit](https://github.com/envshq/envsh/issues/10) — see who can decrypt what
+
+[See all open issues](https://github.com/envshq/envsh/issues) — contributions are welcome.
+
 ## Reporting issues
 
-Found a bug? [Open an issue on GitHub](https://github.com/envshq/envsh/issues).
+Found a bug or have a feature request? [Open an issue on GitHub](https://github.com/envshq/envsh/issues).
