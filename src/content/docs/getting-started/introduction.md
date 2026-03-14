@@ -63,23 +63,7 @@ These are deliberate choices, not missing features. envsh does one thing — zer
 
 ## Architecture
 
-```
-Developer Machine                    CI/CD Machine
-┌─────────────────┐                 ┌─────────────────┐
-│ SSH Keys        │                 │ Machine Key     │
-│ envsh CLI       │                 │ envsh CLI       │
-│ (encrypt/decrypt)│                │ (decrypt only)  │
-└────────┬────────┘                 └────────┬────────┘
-         │ HTTPS (ciphertext only)           │
-         └──────────────┬────────────────────┘
-                        ▼
-              ┌─────────────────┐
-              │  envsh Server   │
-              │  (blob store)   │
-              │  PostgreSQL     │
-              │  Redis          │
-              └─────────────────┘
-```
+![Architecture](/architecture.png)
 
 ## Hierarchy
 

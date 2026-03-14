@@ -15,6 +15,7 @@ export default defineConfig({
 				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0f172a' } },
 			],
 			sidebar: [
+				{ label: 'Why I Built This', slug: 'why' },
 				{
 					label: 'Getting Started',
 					items: [
