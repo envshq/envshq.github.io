@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0d0d0d"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Green accent line at top -->
+  <rect x="0" y="0" width="1200" height="3" fill="#a7c957"/>
+
+  <!-- envsh text -->
+  <text x="100" y="260" font-family="'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace" font-size="96" font-weight="700" fill="#f8fafc" letter-spacing="-3">envsh</text>
+
+  <!-- Tagline -->
+  <text x="100" y="330" font-family="'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace" font-size="28" font-weight="400" fill="#94a3b8">The only secrets manager that can't read your secrets.</text>
+
+  <!-- Sub-tagline -->
+  <text x="100" y="380" font-family="'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace" font-size="20" font-weight="400" fill="#64748b">Zero-knowledge encryption with your SSH keys.</text>
+
+  <!-- Install command box -->
+  <rect x="100" y="430" width="520" height="50" rx="8" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="120" y="462" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="18" fill="#64748b">$</text>
+  <text x="145" y="462" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="18" fill="#a7c957">curl -fsSL https://envsh.dev/install.sh | sh</text>
+
+  <!-- Open source badge -->
+  <text x="100" y="550" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="16" fill="#64748b">Open source  ·  MIT + AGPL-3.0  ·  envsh.dev</text>
+</svg>

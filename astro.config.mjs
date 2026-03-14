@@ -7,12 +7,20 @@ export default defineConfig({
 	site: 'https://envsh.dev',
 	integrations: [
 		starlight({
+			components: {
+				Head: './src/components/Head.astro',
+			},
 			title: 'envsh',
 			description: 'Zero-knowledge secret management. The server can\'t read your secrets.',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/envshq/envsh' }],
 			customCss: ['./src/styles/custom.css'],
 			head: [
 				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0f172a' } },
+				{ tag: 'meta', attrs: { property: 'og:image', content: 'https://envsh.dev/og.png' } },
+				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+				{ tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+				{ tag: 'meta', attrs: { name: 'twitter:image', content: 'https://envsh.dev/og.png' } },
 			],
 			sidebar: [
 				{ label: 'Why I Built This', slug: 'why' },

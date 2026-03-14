@@ -1,0 +1,66 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+
+const route = Astro.locals.starlightRoute;
+const slug = route?.slug ?? route?.id ?? '';
+const pageUrl = `https://envsh.dev/${slug === '' ? '' : slug + '/'}`;
+const isHome = slug === '' || slug === 'index';
+const entry = route?.entry;
+
+const graph: Record<string, any>[] = [
+  {
+    "@type": "Organization",
+    "name": "envsh",
+    "url": "https://envsh.dev",
+    "logo": "https://envsh.dev/favicon.svg",
+    "sameAs": [
+      "https://github.com/envshq/envsh",
+      "https://github.com/envshq/envsh-server"
+    ]
+  }
+];
+
+if (isHome) {
+  graph.push({
+    "@type": "WebSite",
+    "name": "envsh",
+    "url": "https://envsh.dev",
+    "description": "Zero-knowledge secret management. The server can't read your secrets."
+  });
+  graph.push({
+    "@type": "SoftwareApplication",
+    "name": "envsh",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Linux",
+    "url": "https://envsh.dev",
+    "downloadUrl": "https://envsh.dev/install.sh",
+    "softwareVersion": "0.4.1",
+    "license": "https://opensource.org/licenses/MIT",
+    "description": "Zero-knowledge secret management for teams. Encrypted locally with your SSH keys. The server stores ciphertext it can never decrypt.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  });
+} else if (entry && slug !== '404') {
+  graph.push({
+    "@type": "TechArticle",
+    "headline": entry.data.title,
+    "description": entry.data.description || "",
+    "url": pageUrl,
+    "publisher": {
+      "@type": "Organization",
+      "name": "envsh",
+      "url": "https://envsh.dev"
+    },
+    "mainEntityOfPage": pageUrl
+  });
+}
+
+const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
+---
+
+<Default {...Astro.props}><slot /></Default>
+
+<script is:inline type="application/ld+json" set:html={jsonLd} />

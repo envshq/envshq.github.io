@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://envsh.dev/sitemap-index.xml
